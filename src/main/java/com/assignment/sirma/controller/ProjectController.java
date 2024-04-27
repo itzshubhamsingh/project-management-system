@@ -1,7 +1,7 @@
 package com.assignment.sirma.controller;
 
 import com.assignment.sirma.model.Project;
-import com.assignment.sirma.service.BookService;
+import com.assignment.sirma.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,12 +12,15 @@ import java.util.List;
 @RestController
 @RequestMapping("/projects")
 public class ProjectController {
-    private BookService service;
+    private ProjectService service;
+
+    // Constructor Injection
     @Autowired
-    public ProjectController(BookService service){
+    public ProjectController(ProjectService service){
         this.service=service;
     }
 
+    // Expose "/projects" to add a new Project
     @PostMapping
     public ResponseEntity<?> addProject(@RequestBody Project project){
         try{
@@ -30,6 +33,8 @@ public class ProjectController {
                     .body("Internal Server Error: " + e.getMessage());
         }
     }
+
+    // Expose "/projects" to get the list of all existing projects
     @GetMapping
     public ResponseEntity<?> getAllProjects() {
         try {
@@ -42,6 +47,7 @@ public class ProjectController {
         }
     }
 
+    // Expose "/projects/update" to update an existing project
     @PutMapping("/update")
     public ResponseEntity<?> updateProject(@RequestBody Project project) {
         try {
@@ -54,6 +60,7 @@ public class ProjectController {
         }
     }
 
+    // Expose "/projects/delete" to delete an existing project.
     @DeleteMapping("/delete/{projectId}")
     public ResponseEntity<String> deleteProject(@PathVariable Long projectId) {
         try {

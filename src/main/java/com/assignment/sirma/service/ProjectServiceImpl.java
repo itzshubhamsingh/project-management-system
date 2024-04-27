@@ -10,15 +10,20 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+
+// Implementation of the ProjectService interface providing CRUD operations for projects.
 @Service
-public class BookServiceImpl implements BookService{
+public class ProjectServiceImpl implements ProjectService {
 
     private ProjectRepository repository;
+
+    // Constructor Injection
     @Autowired
-    public BookServiceImpl(ProjectRepository repository){
+    public ProjectServiceImpl(ProjectRepository repository){
         this.repository = repository;
     }
 
+    // Add a new project.
     @Override
     public Project addProject(Project project) {
         try {
@@ -29,6 +34,7 @@ public class BookServiceImpl implements BookService{
         }
     }
 
+    // Get all projects.
     @Override
     public List<Project> getAllProjects() {
         try {
@@ -44,6 +50,7 @@ public class BookServiceImpl implements BookService{
         }
     }
 
+    // Update an existing project.
     @Override
     public Project updateProject(Project project) {
         Long projectId = project.getProjectId();
@@ -57,6 +64,7 @@ public class BookServiceImpl implements BookService{
         }
     }
 
+    // Delete a project by ID.
     @Override
     public String deleteProject(Long projectId) {
         try {

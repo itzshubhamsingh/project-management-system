@@ -18,6 +18,8 @@ public class Project {
     private LocalDate startDate;
     private LocalDate endDate;
 
+    // Constructors
+
     public Project(){}
 
     public Project(Long projectId, String projectName, String description, LocalDate startDate, LocalDate endDate) {
@@ -27,6 +29,8 @@ public class Project {
         this.startDate = startDate;
         this.endDate = endDate;
     }
+
+    // Getters and Setters
 
     public Long getProjectId() {
         return projectId;
@@ -67,6 +71,8 @@ public class Project {
     public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
+
+    // toString
 
     @Override
     public String toString() {
